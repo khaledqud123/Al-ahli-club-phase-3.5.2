@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Al Ahli Admin Portal</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="admin-page">
+
+
+<!-- =========================================================
+     ADMIN LOGIN
+========================================================= -->
+
+<div class="admin-login" id="adminLogin">
+
+    <div class="admin-login-card">
+
+        <div class="admin-logo">
+            AA
+        </div>
+
+        <span class="eyebrow">
+            AL AHLI SPORTING CLUB
+        </span>
+
+        <h1>
+            Administration
+        </h1>
+
+        <p>
+            Secure club management portal.
+        </p>
+
+
+        <form id="adminLoginForm">
+
+            <label>
+                Username
+
+                <input
+                    type="text"
+                    id="adminUsername"
+                    required
+                    autocomplete="username"
+                >
+
+            </label>
+
+
+            <label>
+                Password
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    required
+                    autocomplete="current-password"
+                >
+
+            </label>
+
+
+            <button class="submit-button" type="submit">
+
+                <span>Enter Dashboard</span>
+
+                <span class="ui-arrow"></span>
+
+            </button>
+
+
+            <p class="login-error" id="loginError">
+                Incorrect login details.
+            </p>
+
+        </form>
+
+
+        <div class="demo-credentials">
+
+            <small>DEMO ACCESS</small>
+
+            <strong>admin</strong>
+            <strong>alahli1944</strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     ADMIN DASHBOARD
+========================================================= -->
+
+<div class="dashboard" id="dashboard">
+
+    <aside class="dashboard-sidebar">
+
+        <div class="dashboard-brand">
+
+            <span>AA</span>
+
+            <div>
+                <strong>AL AHLI</strong>
+                <small>ADMIN</small>
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <button class="dashboard-nav active" data-panel="overview">
+                Overview
+            </button>
+
+            <button class="dashboard-nav" data-panel="bookings">
+                Bookings
+            </button>
+
+            <button class="dashboard-nav" data-panel="facilities">
+                Facilities
+            </button>
+
+            <button class="dashboard-nav" data-panel="events">
+                Events
+            </button>
+
+            <button class="dashboard-nav" data-panel="club">
+                Club Content
+            </button>
+
+        </nav>
+
+
+        <button class="logout-btn" id="logoutBtn">
+            Log Out
+        </button>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <span class="eyebrow">
+                    AL AHLI ADMINISTRATION
+                </span>
+
+                <h1 id="dashboardTitle">
+                    Overview
+                </h1>
+
+            </div>
+
+            <a href="index.html" class="dashboard-site-link">
+                View Website
+                <span class="ui-arrow"></span>
+            </a>
+
+        </header>
+
+
+        <!-- OVERVIEW -->
+
+        <section class="dashboard-panel active" id="panel-overview">
+
+            <div class="dashboard-stats">
+
+                <div class="dashboard-stat">
+                    <span>BOOKINGS</span>
+                    <strong id="adminBookingCount">0</strong>
+                </div>
+
+                <div class="dashboard-stat">
+                    <span>PENDING</span>
+                    <strong id="adminPendingCount">0</strong>
+                </div>
+
+                <div class="dashboard-stat">
+                    <span>FIELDS</span>
+                    <strong>4</strong>
+                </div>
+
+                <div class="dashboard-stat">
+                    <span>POOL STATUS</span>
+                    <strong id="adminPoolStatus">OPEN</strong>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-card-heading">
+
+                        <div>
+                            <span>RECENT ACTIVITY</span>
+                            <h2>Bookings</h2>
+                        </div>
+
+                    </div>
+
+                    <div id="recentBookings"></div>
+
+                </div>
+
+
+                <div class="dashboard-card">
+
+                    <span>FACILITY STATUS</span>
+
+                    <h2>Club Facilities</h2>
+
+                    <div class="facility-status-row">
+                        <span>Football Fields</span>
+                        <strong class="open-status">4 ACTIVE</strong>
+                    </div>
+
+                    <div class="facility-status-row">
+                        <span>Swimming Pools</span>
+                        <strong class="open-status">OPEN</strong>
+                    </div>
+
+                    <div class="facility-status-row">
+                        <span>Al Meidan</span>
+                        <strong class="open-status">ACTIVE</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOOKINGS -->
+
+        <section class="dashboard-panel" id="panel-bookings">
+
+            <div class="dashboard-card">
+
+                <span>FIELD RESERVATIONS</span>
+
+                <h2>Booking Requests</h2>
+
+                <div class="admin-table-wrap">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Reference</th>
+                                <th>Name</th>
+                                <th>Field</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="bookingTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FACILITIES -->
+
+        <section class="dashboard-panel" id="panel-facilities">
+
+            <div class="dashboard-card">
+
+                <span>FACILITY CONTROL</span>
+
+                <h2>Facilities</h2>
+
+                <div class="admin-control-grid">
+
+                    <div class="admin-control">
+
+                        <div>
+                            <strong>Football Field 01</strong>
+                            <span>Booking availability</span>
+                        </div>
+
+                        <button class="toggle-control active">
+                            OPEN
+                        </button>
+
+                    </div>
+
+
+                    <div class="admin-control">
+
+                        <div>
+                            <strong>Football Field 02</strong>
+                            <span>Booking availability</span>
+                        </div>
+
+                        <button class="toggle-control active">
+                            OPEN
+                        </button>
+
+                    </div>
+
+
+                    <div class="admin-control">
+
+                        <div>
+                            <strong>Football Field 03</strong>
+                            <span>Booking availability</span>
+                        </div>
+
+                        <button class="toggle-control active">
+                            OPEN
+                        </button>
+
+                    </div>
+
+
+                    <div class="admin-control">
+
+                        <div>
+                            <strong>Football Field 04</strong>
+                            <span>Booking availability</span>
+                        </div>
+
+                        <button class="toggle-control active">
+                            OPEN
+                        </button>
+
+                    </div>
+
+
+                    <div class="admin-control">
+
+                        <div>
+                            <strong>Swimming Pools</strong>
+                            <span>Public availability</span>
+                        </div>
+
+                        <button
+                            class="toggle-control active"
+                            id="poolToggle"
+                        >
+                            OPEN
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EVENTS -->
+
+        <section class="dashboard-panel" id="panel-events">
+
+            <div class="dashboard-card">
+
+                <span>CONTENT</span>
+
+                <h2>Events & Announcements</h2>
+
+                <div class="admin-event">
+
+                    <div>
+                        <strong>Football activities</strong>
+                        <span>Sport</span>
+                    </div>
+
+                    <button>Edit</button>
+
+                </div>
+
+
+                <div class="admin-event">
+
+                    <div>
+                        <strong>Community gathering</strong>
+                        <span>Community</span>
+                    </div>
+
+                    <button>Edit</button>
+
+                </div>
+
+
+                <div class="admin-event">
+
+                    <div>
+                        <strong>Cultural occasion</strong>
+                        <span>Culture</span>
+                    </div>
+
+                    <button>Edit</button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CLUB -->
+
+        <section class="dashboard-panel" id="panel-club">
+
+            <div class="dashboard-card">
+
+                <span>CLUB CONTENT</span>
+
+                <h2>Al Ahli Information</h2>
+
+                <div class="content-management-grid">
+
+                    <button>
+                        History
+                    </button>
+
+                    <button>
+                        Administration
+                    </button>
+
+                    <button>
+                        Achievements
+                    </button>
+
+                    <button>
+                        Sports
+                    </button>
+
+                    <button>
+                        Facilities
+                    </button>
+
+                    <button>
+                        Culture
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
